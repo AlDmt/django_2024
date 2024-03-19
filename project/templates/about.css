@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+   
+}
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.home {
+    line-height: 1.6;
+    margin-left:auto;
+    text-indent: 1.5em; 
+    text-align: justify;
+}
+h2 {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.back{
+    background-image: url(back.jpg); 
+   
+}
+
+ol {
+    list-style-type: circle;
+    
+   }
+   li{
+    font-family: Arial, sans-serif;
+    font-size:26px;
+    padding: 0;
+   }
+
+Фавикон сделать.

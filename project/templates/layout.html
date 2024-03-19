@@ -1,0 +1,35 @@
+<!-- layout.html -->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Мой сайт{% endblock %}</title>
+    <!-- Подключение стилей CSS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <h1>сайт</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'about.html' %}">О нас</a></li>
+                <!-- Добавьте другие ссылки на страницы вашего сайта -->
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Основное содержимое страницы -->
+    <main>
+       
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer>
+        <p>Это сайт</p>
+    </footer>
+</body>
+</html>
