@@ -7,7 +7,7 @@ body {
     max-width: 800px;
     margin: 20px auto;
     padding: 0 20px;
-    background-image:url(contact.jpg)
+   
 }
 h1 {
     text-align: center;
@@ -16,6 +16,8 @@ h1 {
 .home {
     line-height: 1.6;
     margin-left:auto;
+    text-indent: 1.5em; 
+    text-align: justify;
 }
 h2 {
     text-align: right;
@@ -24,7 +26,17 @@ h2 {
 
 .back{
     background-image: url(back.jpg); 
-    background-color: #c7b39b; 
+   
 }
 
+ol {
+    list-style-type: circle;
+    
+   }
+   li{
+    font-family: Arial, sans-serif;
+    font-size:26px;
+    padding: 0;
+   }
 
+Фавикон сделать.
