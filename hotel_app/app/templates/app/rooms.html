@@ -1,0 +1,70 @@
+{% extends 'app/layout.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" type="\rooms.css" href="{% static 'css/rooms.css' %}">
+</head>
+<body>
+    
+    <div class="room-cards-container">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        
+                        <div class="card mb-4" style="max-width: 540px;">
+                            <img src="{% static 'media\img\rooms\standart\st1.jpeg' %}" class="card-img-top" alt="Изображение номера">
+                            <div class="card-body">
+                                <h5 class="card-title">Стандарт</h5>
+                                <p class="card-text">Уютные номера с основными удобствами для комфортного пребывания</p>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-md-4">
+                        
+                        <div class="card mb-4" style="max-width: 540px;">
+                            <img src="{% static 'media\img\rooms\delux\dx1.jpg' %}" class="card-img-top" alt="Изображение номера">
+                            <div class="card-body">
+                                <h5 class="card-title">Делюкс</h5>
+                                <p class="card-text">Номера с панорамными видами и удобствами для повышенного комфорта</p>
+                            
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-md-4">
+                        
+                        <div class="card mb-4" style="max-width: 540px;">
+                            <img src="{% static '\media\img\rooms\lux\l1.jpg' %}" class="card-img-top" alt="Изображение номера">
+                            <div class="card-body">
+                                <h5 class="card-title">Люкс</h5>
+                                <p class="card-text">Просторные номера с изысканным дизайном и роскошными удобствами, обеспечивающими незабываемый отдых</p>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-md-4">
+                        
+                        <div class="card mb-5" style="max-width: 540px;">
+                            <img src="{% static 'media\img\rooms\chale\ch1.jpg' %}" class="card-img-top" alt="Изображение номера">
+                            <div class="card-body">
+                                <h5 class="card-title">Шале</h5>
+                                <p class="card-text">Уютные коттеджи в окружении природы, предлагающие уединение и комфорт, идеальное место для спокойного отдыха</p>
+                            
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <!-- Другие карточки номеров -->
+                </div>
+            </div>
+
+ </body>
+
+{%endblock%}

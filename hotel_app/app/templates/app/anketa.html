@@ -1,0 +1,121 @@
+
+{% extends 'app/layout.html' %}
+{% load static %}
+
+{% block content %}
+ 
+
+
+<form mothod='post'>
+    {% csrf_token %}
+    <label for="{{form.name.id_for_label}}">{{form.name.id_for_label}}:<label>
+        {{form.name}}<br></br>
+        
+
+
+        <form id="AnketaForm" action="{% url 'anketa' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Имя:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="city">Город:</label>
+            <input type="text" class="form-control" id="city" name="city" required>
+        </div>
+        <div class="form-group">
+            <label for="job">Работа:</label>
+            <input type="text" class="form-control" id="job" name="job" required>
+        </div>
+        <div class="form-group">
+            <label>Пол:</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="gender_M" name="gender" value="M" required>
+                <label class="form-check-label" for="gender_M">мужской</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="gender_F" name="gender" value="F" required>
+                <label class="form-check-label" for="gender_F">женский</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="internet">Частота использования интернета:</label>
+            <select class="form-control" id="internet" name="internet" required>
+                <option value="daily">Ежедневно</option>
+                <option value="every_two_days">Каждые два дня</option>
+                <option value="weekly">Еженедельно</option>
+                <option value="unknown">Неизвестно</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Сообщение:</label>
+            <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="agreeToNews" name="agree_to_news">
+            <label class="form-check-label" for="agreeToNews">Согласен на обработку персональных данных</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+
+
+
+
+
+
+
+{% comment %} <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Сообщение отправлено</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="successModalBody">
+                <!-- Здесь будут отображаться данные -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeSuccessModal()">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#AnketaForm').on('submit', function(event) {
+            event.preventDefault(); // Предотвращаем отправку формы
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                success: function(response) {
+                    if (response.success) {
+                        // Отображаем данные в модальном окне
+                        $('#successModal .modal-body').html(
+                            '<p>Имя: ' + response.data.name + '</p>' +
+                            '<p>Город: ' + response.data.city + '</p>' +
+                            '<p>Работа: ' + response.data.job + '</p>' +
+                            '<p>Пол: ' + response.data.gender + '</p>' +
+                            '<p>Частота использования интернета: ' + response.data.internet + '</p>' +
+                            '<p>Email: ' + response.data.email + '</p>' +
+                            '<p>Сообщение: ' + response.data.message + '</p>'
+                        );
+                        $('#successModal').modal('show'); // Показываем модальное окно
+                    } else {
+                        // Обработка ошибок валидации, если необходимо
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Обработка ошибок AJAX, если необходимо
+                }
+            });
+        });
+    });
+</script> {% endc
