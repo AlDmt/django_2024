@@ -27,9 +27,9 @@ urlpatterns = [
     path('add/', views.add, name='add'),
     path('feedback/', views.feedback, name='feedback'),
     path('contacts/', views.contacts, name='contacts'),
-  
+    path('anketa/',views.anketa_view, name='anketa'),
     path('registration/', views.registration, name='registration'),
     path('about/', views.about, name='about'),
-   
-     path('booking/', views.booking, name='booking')
+    path('registration/', views.registration, name= 'registration'),
+    path('booking/', views.booking, name='booking'),
 ]

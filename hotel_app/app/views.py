@@ -1,9 +1,17 @@
 import datetime
 from django.http import HttpRequest, JsonResponse
 from django.shortcuts import redirect, render,redirect
+from datetime import datetime
+
+from django.contrib.auth.forms import UserCreationForm
+
+
+from .models import Anketa
+
 
 from .forms import  FeedbackForm
-from .forms import  AnketaForm
+from .forms import AnketaForm
+
 from django.contrib.auth.forms import UserCreationForm
 
 def registration(request):
@@ -32,6 +40,37 @@ def registration(request):
     )
 
 
+
+
+from django.shortcuts import render, redirect
+from .forms import AnketaForm
+
+def anketa_view(request):
+    assert isinstance(request, HttpRequest)
+
+    if request.method == 'POST':
+        form = AnketaForm(request.POST)
+        if form.is_valid():
+            data = dict()
+            data['second_name'] = form.cleaned_data['second_name']
+            data['first_name'] = form.cleaned_data['first_name']
+            data['reservation'] = form.cleaned_data['reservation']
+            data['city'] = form.cleaned_data['city']
+            data['job'] = form.cleaned_data['job']
+            data['work'] = form.cleaned_data['work']
+            data['back'] = form.cleaned_data['back']
+            data['email'] = form.cleaned_data['email']
+            data['message'] = form.cleaned_data['message']
+            data['notice'] = form.cleaned_data['notice']
+            
+            # Сохраняем данные в базе данных или другом хранилище
+
+            return render(request, 'app/anketa.html', {'form': form, 'data': data})
+
+    else:
+        form = AnketaForm()
+
+    return render(request, 'app/anketa.html', {'form': form})
 
 
 

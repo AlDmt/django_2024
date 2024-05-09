@@ -12,23 +12,41 @@ class Feedback(models.Model):
         return self.name
 
 
+from django.db import models
+
 class Anketa(models.Model):
-    name = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    job = models.CharField(max_length=200)
-    GENDER_CHOICES = [
-        ('M', 'мужской'),
-        ('F', 'женский'),
-        ('unknown', 'unknown'),
-    ]
-    INTERNET_CHOICES = [
-        ('daily', 'daily'),
-        ('every_two_days', 'every_two_days'),
-        ('weekly', 'weekly'),
-        ('unknown', 'неизвестно'),
-    ]
-    gender = models.CharField(max_length=7, choices=GENDER_CHOICES, default="unknown")
-    internet = models.CharField(max_length=20, choices=INTERNET_CHOICES, default="unknown")
-    email = models.EmailField()
-    message = models.TextField()
-    agree_to_news = models.BooleanField(default=False)  
+    second_name = models.CharField(max_length=100, verbose_name='Фамилия')
+    first_name = models.CharField(max_length=100, verbose_name='Имя')
+    RESERVATION_CHOICES = (
+        ('5', '5'),
+        ('4', '4'),
+        ('3', '3'),
+        ('2', '2'),
+        ('1', '1'),
+    )
+
+    reservation = models.CharField(
+        verbose_name='Насколько быстро и просто вы забронировали номер?',
+        choices=RESERVATION_CHOICES,
+        max_length=1,
+        default='5'  # Установка значения по умолчанию на '5'
+    )
+    city = models.CharField(max_length=100, verbose_name='Ваш город')
+    job = models.CharField(max_length=100, verbose_name='Ваш род занятий')
+    work = models.CharField(
+        max_length=1,
+        choices=(('5','5'), ('4', '4'), ('3', '3'), ('2', '2'), ('1', '1')),
+        default='5',
+        verbose_name='Оцените качество работы персонала'
+    )
+    back = models.CharField(max_length=1, choices=(('1','Да'), ('2', 'Нет')), verbose_name='Хотели бы вы приехать к нам еще?')
+    email = models.EmailField(verbose_name='Ваш e-mail')
+    message = models.TextField(verbose_name='Отзыв')
+    notice = models.BooleanField(default=False, verbose_name='Хочу получать новости на электронную почту')
+
+    def __str__(self):
+        return f'{self.first_name} {self.second_name}'
+
+    class Meta:
+        verbose_name = 'Анкета'
+        verbose_name_plural = 'Анкеты'
