@@ -5,7 +5,19 @@ from random import choices
 from django import forms
 from .models import  Feedback
 from django.contrib.auth.forms import AuthenticationForm
+from django.db import models
 
+from .models import Comment
+
+class CommentForm (forms.ModelForm):
+
+    class Meta:
+
+        model = Comment # используемая модель
+
+        fields = ('text',) # требуется заполнить только поле text
+
+        labels = {'text': "Комментарий"} # метка к полю формы text
 
 
 class FeedbackForm(forms.ModelForm):

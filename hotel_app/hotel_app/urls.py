@@ -39,6 +39,8 @@ urlpatterns = [
     path('about/', views.about, name='about'),
    path('accounts/', include('django.contrib.auth.urls')),
     path('booking/', views.booking, name='booking'),
+    path('blog/', views.blog, name='blog'),
+    path('blogpost/<int:parametr>/', views.blogpost, name='blogpost'),
     
     path('login/',
         LoginView.as_view

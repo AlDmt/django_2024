@@ -5,14 +5,66 @@ from datetime import datetime
 
 from django.contrib.auth.forms import UserCreationForm
 
-
-from .models import Anketa
-
-
 from .forms import  FeedbackForm
 from .forms import AnketaForm
 
+
+
 from django.contrib.auth.forms import UserCreationForm
+
+from django.db import models
+
+from .models import Blog
+
+def blog(request):
+
+    posts = Blog.objects.all() # запрос на выбор всех статей блога из модели
+    assert isinstance(request, HttpRequest)
+
+
+
+    return render(
+
+        request,
+
+        'app/blog.html',
+
+        {
+
+            'title':'Блог',
+
+            'posts': posts, # передача списка статей в шаблон веб-страницы
+
+            'year':datetime.now().year,
+
+        }
+
+    )
+    
+def blogpost(request, parametr):
+
+
+
+    assert isinstance(request, HttpRequest)
+
+    post_1 = Blog.objects.get(id=parametr) # запрос на выбор конкретной статьи по параметру
+
+    return render(
+
+        request,
+
+        'app/blogpost.html',
+
+        {
+
+            'post_1': post_1, # передача конкретной статьи в шаблон веб-страницы
+
+            'year':datetime.now().year,
+
+        }
+
+    )
+    
 
 def registration(request):
     if request.method=="POST":
@@ -120,4 +172,3 @@ def feedback(request):
     else:
         form = FeedbackForm()
     return render(request, 'app/feedback.html', {'form': form})
-
