@@ -1,9 +1,12 @@
 # hotel_app/forms.py
 
-
+from django.utils.translation import gettext_lazy as _
 from random import choices
 from django import forms
 from .models import  Feedback
+from django.contrib.auth.forms import AuthenticationForm
+
+
 
 class FeedbackForm(forms.ModelForm):
     class Meta:
@@ -32,3 +35,16 @@ class AnketaForm(forms.Form) :
     email=forms.EmailField(label='Baш e-mail', min_length=7)
     message = forms.CharField(label='Форма отзыва', widget=forms.Textarea(attrs={'rows':5,'cols':25}))
     notice = forms.BooleanField(label='Хочу получать новости на электронную почту', required=False)
+    
+    
+class BootstrapAuthenticationForm(AuthenticationForm):
+    
+        username = forms.CharField(max_length=254,
+                               widget=forms.TextInput({
+                                   'class': 'form-control',
+                                   'placeholder': 'User name'}))
+        password = forms.CharField(label=_("Password"),
+                               widget=forms.PasswordInput({
+                                   'class': 'form-control',
+                                   'placeholder':'Password'}))
+                                                  

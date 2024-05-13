@@ -48,8 +48,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/anketa/">Формы обратной связи</a>
                     </li>
+                    {% if not user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="/registration/">Регистрация</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login/">Авторизация</a>
                     </li>
                     
                 </ul>
@@ -71,8 +76,4 @@
     {% block content %}{% endblock %}
 </div>
 
-<footer class="footer mt-auto py-3 bg-dark text-white">
-    <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
-    </div>
-</footer>
+<footer cla

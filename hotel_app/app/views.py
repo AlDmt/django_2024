@@ -38,7 +38,18 @@ def registration(request):
             'year':datetime.now().year,
         }
     )
+    
+def home(request):
+    assert isinstance(request,HttpRequest)
+    return render(
+        request,
+        'app/index.html',
+       { 'title':'Главная',
+        'year': datetime.now().year,}
+    )
+    
 
+    
 
 
 
@@ -109,5 +120,4 @@ def feedback(request):
     else:
         form = FeedbackForm()
     return render(request, 'app/feedback.html', {'form': form})
-
 

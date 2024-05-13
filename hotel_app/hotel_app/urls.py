@@ -14,15 +14,22 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import include, path
-from app import views
+from django import forms, views
 from app import views
 
+from django.contrib import admin
+from django.urls import include, path
+from django.contrib.auth.views import LoginView, LogoutView
+from app.forms import BootstrapAuthenticationForm
+
+from datetime import datetime
+from app import forms
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+   
     
     path('', views.index, name='index'),
+    path('home/', views.home, name='home'),
     path('rooms/', views.rooms, name='rooms'),
     path('add/', views.add, name='add'),
     path('feedback/', views.feedback, name='feedback'),
@@ -30,6 +37,21 @@ urlpatterns = [
     path('anketa/',views.anketa_view, name='anketa'),
     path('registration/', views.registration, name='registration'),
     path('about/', views.about, name='about'),
-    path('registration/', views.registration, name= 'registration'),
+   path('accounts/', include('django.contrib.auth.urls')),
     path('booking/', views.booking, name='booking'),
+    
+    path('login/',
+        LoginView.as_view
+        (
+            template_name='app/login.html',
+            authentication_form=forms.BootstrapAuthenticationForm,
+            extra_context=
+            {
+                'title':'Войти',
+                'year':datetime.now().year,
+            }
+        ),
+        name='login'),
+    path('logout/',LogoutView.as_view(next_page='home/'), name='logout'),
+    path('admin/', admin.site.urls),
 ]
