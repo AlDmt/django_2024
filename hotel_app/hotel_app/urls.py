@@ -25,6 +25,10 @@ from app.forms import BootstrapAuthenticationForm
 from datetime import datetime
 from app import forms
 
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
+
 urlpatterns = [
    
     
@@ -57,3 +61,7 @@ urlpatterns = [
     path('logout/',LogoutView.as_view(next_page='home/'), name='logout'),
     path('admin/', admin.site.urls),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += staticfiles_urlpatterns()

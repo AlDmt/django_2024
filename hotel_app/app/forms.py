@@ -6,6 +6,7 @@ from django import forms
 from .models import  Feedback
 from django.contrib.auth.forms import AuthenticationForm
 from django.db import models
+from .models import Blog
 
 from .models import Comment
 
@@ -59,4 +60,11 @@ class BootstrapAuthenticationForm(AuthenticationForm):
                                widget=forms.PasswordInput({
                                    'class': 'form-control',
                                    'placeholder':'Password'}))
-                                                  
+        
+        
+
+class BlogForm(forms.ModelForm):
+    class Meta:
+        model=Blog
+        fields=('title','description','content','image')
+        labels={'title':"Заголовок",'description': "Краткое содержание", 'content': "Полное содержание", 'image':"Изображение"}
