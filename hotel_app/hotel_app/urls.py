@@ -45,6 +45,8 @@ urlpatterns = [
     path('booking/', views.booking, name='booking'),
     path('blog/', views.blog, name='blog'),
     path('blogpost/<int:parametr>/', views.blogpost, name='blogpost'),
+    path('newpost/', views.newpost, name='newpost'),
+    path('videopost/', views.videopost, name='videopost'),
     
     path('login/',
         LoginView.as_view
@@ -58,7 +60,7 @@ urlpatterns = [
             }
         ),
         name='login'),
-    path('logout/',LogoutView.as_view(next_page='home/'), name='logout'),
+    path('logout/',LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls),
 ]
 

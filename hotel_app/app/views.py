@@ -185,6 +185,9 @@ def add(request):
     return render(request, 'app/add.html')
 def booking(request):
     return render(request, 'app/booking.html')
+def videopost(request):
+    return render(request, 'app/videopost.html')
+
 
 
 
@@ -213,10 +216,10 @@ def newpost(request):
             blog_f.save()
             
             return redirect('blog')
-        else:
-            blogform=BlogForm()
+    else:
+        blogform=BlogForm()
             
-        return render(
+    return render(
             request,
             'app/newpost.html',
             {

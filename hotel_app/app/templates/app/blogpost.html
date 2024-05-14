@@ -2,6 +2,12 @@
 {% extends 'app/layout.html' %}
 {% load static %}
 {% block content %}
+
+{% if post_1.image and post_1.image.url != '/media/temp.jpg'%}
+<img src="{{post_1.image.url}}" alt="Картинка статьи блога" width="200"/>
+{%endif%}
+
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-12 text-center">

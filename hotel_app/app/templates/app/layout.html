@@ -36,6 +36,14 @@
                         <a class="nav-link" href="/blog/">Блог</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/videopost/">Видео</a>
+                    </li>
+                    {%if user.is_superuser%}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/newpost/">Добавить статью</a>
+                    </li>
+                    {%endif%}
+                    <li class="nav-item">
                         <a class="nav-link" href="/add/">Полезный ресурсы</a>
                     </li>
                     
@@ -48,14 +56,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/anketa/">Формы обратной связи</a>
                     </li>
-                    {% if not user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/registration/">Регистрация</a>
-                    </li>
-                    {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login/">Авторизация</a>
-                    </li>
+                    {% include "app/loginpartial.html" %}
+
+
+
+                  
                     
                 </ul>
             </div>
