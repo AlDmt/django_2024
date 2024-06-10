@@ -47,7 +47,9 @@ urlpatterns = [
     path('blogpost/<int:parametr>/', views.blogpost, name='blogpost'),
     path('newpost/', views.newpost, name='newpost'),
     path('videopost/', views.videopost, name='videopost'),
-    
+    path('kino/', views.kino, name='kino'),
+    path('parking/', views.parking, name='parking'),
+     path('standart/', views.standart, name='standart'),
     path('login/',
         LoginView.as_view
         (

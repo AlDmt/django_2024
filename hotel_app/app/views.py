@@ -191,7 +191,8 @@ def kino(request):
     return render(request, 'app/kino.html')
 def parking(request):
     return render(request, 'app/parking.html')
-
+def standart(request):
+    return render(request, 'app/rooms/standart.html')
 
 
 def feedback(request):
