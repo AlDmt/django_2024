@@ -2,39 +2,43 @@
 {% load static %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Отзыв</title>
-</head>
-<body>
-    {% if data %}
-    <h1>Спасибо за ваш отзыв!</h1>
-    <h2>Ваши данные:</h2>
-    <ul>
-        <li><strong>Фамилия:</strong> {{ data.second_name }}</li>
-        <li><strong>Имя:</strong> {{ data.first_name }}</li>
-        <li><strong>Номер брони:</strong> {{ data.reservation }}</li>
-        <li><strong>Город:</strong> {{ data.city }}</li>
-        <li><strong>Род занятий:</strong> {{ data.job }}</li>
-        <li><strong>Оценка работы персонала:</strong> {{ data.work }}</li>
-        <li><strong>Хотели бы вы вернуться:</strong> {{ data.back }}</li>
-        <li><strong>E-mail:</strong> {{ data.email }}</li>
-        <li><strong>Отзыв:</strong> {{ data.message }}</li>
-        <li><strong>Хочу получать новости:</strong> {% if data.notice %}Да{% else %}Нет{% endif %}</li>
-    </ul>
-    {% else %}
-    <h1>Форма отзыва</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-
-        <button type="submit">Отправить отзыв</button>
-    </form>
-    {% endif %}
-</body>
-</html>
-
+<div class="container mt-5">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Отзыв</title>
+    </head>
+    <body>
+        {% if data %}
+            <div class="alert alert-success text-center" role="alert">
+                <h1>Спасибо за ваш отзыв!</h1>
+                <h2>Ваши данные:</h2>
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Фамилия:</strong> {{ data.second_name }}</li>
+                    <li class="list-group-item"><strong>Имя:</strong> {{ data.first_name }}</li>
+                    <li class="list-group-item"><strong>Номер брони:</strong> {{ data.reservation }}</li>
+                    <li class="list-group-item"><strong>Город:</strong> {{ data.city }}</li>
+                    <li class="list-group-item"><strong>Род занятий:</strong> {{ data.job }}</li>
+                    <li class="list-group-item"><strong>Оценка работы персонала:</strong> {{ data.work }}</li>
+                    <li class="list-group-item"><strong>Хотели бы вы вернуться:</strong> {{ data.back }}</li>
+                    <li class="list-group-item"><strong>E-mail:</strong> {{ data.email }}</li>
+                    <li class="list-group-item"><strong>Отзыв:</strong> {{ data.message }}</li>
+                    <li class="list-group-item"><strong>Хочу получать новости:</strong> {% if data.notice %}Да{% else %}Нет{% endif %}</li>
+                </ul>
+                <h3 class="mt-4 text-danger">ВАШ ОТЗЫВ КРОМЕ ВАС НИКОМУ НЕ НУЖЕН! И МЫ НИЧЕГО НЕ ПРИНИМАЕМ. СПАСИБО (НЕТ)</h3>
+            </div>
+        {% else %}
+            <div class="card p-4">
+                <h1 class="card-title text-center mb-4">Форма отзыва</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary mt-3">Отправить отзыв</button>
+                    </div>
+                </form>
+            </div>
+        {% endif %}
+    </body>
+</div>
 {% endblock %}

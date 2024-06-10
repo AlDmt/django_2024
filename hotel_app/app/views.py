@@ -187,7 +187,10 @@ def booking(request):
     return render(request, 'app/booking.html')
 def videopost(request):
     return render(request, 'app/videopost.html')
-
+def kino(request):
+    return render(request, 'app/kino.html')
+def parking(request):
+    return render(request, 'app/parking.html')
 
 
 
